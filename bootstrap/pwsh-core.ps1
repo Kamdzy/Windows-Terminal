@@ -135,10 +135,21 @@ PROCESS {
     # Install Oh My Posh
     Install-OhMyPosh
     
-    # Install and load the "oh-my-posh" profile
+    # Install and load the required profiles
+    Install-Profile "paths" -Load
+
+    # Install and load the useful profiles
+    Install-Profile "b64" -Load
+    Install-Profile "dotnet" -Load
+    Install-Profile "git" -Load
+    Install-Profile "json" -Load
+    Install-Profile "local" -Load
     Install-Profile "oh-my-posh" -Load
-    # Install and load the "psreadline" profile
     Install-Profile "psreadline" -Load
+    Install-Profile "vim" -Load
+
+    # Install and load the security-sensitive profiles
+    Install-Profile "secret" -Load
 
     # Update the Posh theme
     Update-PoshTheme

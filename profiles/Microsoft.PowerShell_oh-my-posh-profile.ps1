@@ -20,7 +20,7 @@ Function Upgrade-TerminalIcons {
   # If the Terminal-Icons module is already installed, update it
   if (Get-Module Terminal-Icons -ListAvailable) { Update-Module Terminal-Icons -Force }
   # Otherwise, install the Terminal-Icons module
-  else { Install-Module Terminal-Icons -Force }
+  else { Install-Module -Name Terminal-Icons -Repository PSGallery -Force }
 }
 
 # Oh My Posh should be installed using WinGet on Windows
@@ -41,7 +41,7 @@ if (-not (Get-Module -ListAvailable | Where-Object { $_.Name -eq "Terminal-Icons
   Write-Host "Terminal-Icons module not found. Installing..." -ForegroundColor Yellow
 
   # If not available, install the Terminal-Icons module
-  Install-Module Terminal-Icons -Force
+  Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 }
 
 Import-Module -Name Terminal-Icons
