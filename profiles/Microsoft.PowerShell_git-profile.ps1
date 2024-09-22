@@ -21,7 +21,7 @@ if ($completions.IsPresent) {
     # Define a function to check if a module is available
     Function Has-Module {
         param([string]$name)
-        return [bool] (Get-Module -ListAvailable -Name $name)
+        return [bool] (Get-Module -ListAvailable | Where-Object { $_.Name -eq $name })
     }
 
     # Define a function to install Git completions
