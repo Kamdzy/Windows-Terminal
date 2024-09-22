@@ -35,7 +35,13 @@ BEGIN {
                 -Path $folder | ForEach-Object {
                 $path = $_.FullName
                 $fontName = $_.Name
-                    
+                
+                # Skip LICENSE and README.md files
+                if ($fontName -eq "LICENSE" -or $fontName -eq "README.md") {
+                    Write-Host "Skipping $($path)." -ForegroundColor Yellow
+                    return
+                }
+
                 # Set the target path for the font file
                 $target = Join-Path -Path $systemFontsPath -ChildPath $fontName
                 if (test-path $target) {
@@ -127,7 +133,7 @@ PROCESS {
     # Install Nerd Fonts
     Install-NerdFonts
     # Install Oh My Posh
-    # Install-OhMyPosh
+    Install-OhMyPosh
     
     # Install and load the "oh-my-posh" profile
     Install-Profile "oh-my-posh" -Load

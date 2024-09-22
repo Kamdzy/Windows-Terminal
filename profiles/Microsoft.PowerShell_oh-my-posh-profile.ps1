@@ -38,6 +38,12 @@ Function Upgrade-TerminalIcons {
 # Initialize Oh My Posh with the specified configuration file and execute the resulting command
 . oh-my-posh init pwsh --config "~/.poshthemes/oh-my-posh.json" | Invoke-Expression
 
+# Check if the Terminal-Icons module is not available
+if (-not (Get-Module Terminal-Icons -ListAvailable)) {
+  # If not available, install the Terminal-Icons module
+  Install-Module Terminal-Icons -Force
+}
+
 # If the platform is Windows, import the Terminal-Icons module
 if ($PSVersionTable.Platform -eq "Win32NT") {
   Import-Module -Name Terminal-Icons
