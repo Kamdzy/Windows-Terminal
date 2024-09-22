@@ -5,14 +5,14 @@ Load-Profile "paths" -Quiet
 
 ## Load useful profiles
 
-Load-Profile "b64"
-Load-Profile "dotnet"
-Load-Profile "git"
-Load-Profile "json"
-Load-Profile "local"
-Load-Profile "oh-my-posh"
-Load-Profile "psreadline"
-Load-Profile "vim"
+Load-Profile "b64" -Quiet
+Load-Profile "dotnet" -Quiet
+Load-Profile "git" -Quiet
+Load-Profile "json" -Quiet
+Load-Profile "local" -Quiet
+Load-Profile "oh-my-posh" -Quiet
+Load-Profile "psreadline" -Quiet
+Load-Profile "vim" -Quiet
 
 ## SECURITY - SENSITIVE DATA
 
