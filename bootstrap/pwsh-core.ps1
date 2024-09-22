@@ -124,8 +124,8 @@ BEGIN {
 PROCESS {
     # Download the default PowerShell profile
     Download-Profile
-    # Install the Pwsh-Profile-Kam-New module from the PSGallery repository
-    Install-Module -Name Pwsh-Profile-Kam-New -Repository PSGallery -Scope CurrentUser -Force
+    # Install the Pwsh-Profile-Kamdzy module from the PSGallery repository
+    Install-Module -Name Pwsh-Profile-Kamdzy -Repository PSGallery -Scope CurrentUser -Force
 
     # Load the current profile
     . $profile
