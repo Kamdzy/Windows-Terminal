@@ -16,9 +16,6 @@ Function Update-PoshTheme {
 
 # Define a function named Upgrade-TerminalIcons to install or update the Terminal-Icons module
 Function Upgrade-TerminalIcons {
-  
-  # Check if the platform is Windows
-  if ($PSVersionTable.Platform -ne "Win32NT") { return }
 
   # If the Terminal-Icons module is already installed, update it
   if (Get-Module Terminal-Icons -ListAvailable) { Update-Module Terminal-Icons -Force }
@@ -38,13 +35,13 @@ Function Upgrade-TerminalIcons {
 # Initialize Oh My Posh with the specified configuration file and execute the resulting command
 . oh-my-posh init pwsh --config "~/.poshthemes/oh-my-posh.json" | Invoke-Expression
 
+
 # Check if the Terminal-Icons module is not available
-if (-not (Get-Module Terminal-Icons -ListAvailable)) {
+if (-not (Get-Module -ListAvailable | Where-Object { $_.Name -eq "Terminal-Icons" })) {
+  Write-Host "Terminal-Icons module not found. Installing..." -ForegroundColor Yellow
+
   # If not available, install the Terminal-Icons module
   Install-Module Terminal-Icons -Force
 }
 
-# If the platform is Windows, import the Terminal-Icons module
-if ($PSVersionTable.Platform -eq "Win32NT") {
-  Import-Module -Name Terminal-Icons
-}
+Import-Module -Name Terminal-Icons

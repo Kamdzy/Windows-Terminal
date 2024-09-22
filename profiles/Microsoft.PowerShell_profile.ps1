@@ -109,23 +109,24 @@ Function Remove-DefaultProfile {
     }
 }
 
-## Check if the 'Pwsh-Profile' module is available
-if (-not (Get-Module -Name Pwsh-Profile -ListAvailable)) {
-    Write-Host "Missing required 'Pwsh-Profile' module." -ForegroundColor Yellow
+## Check if the 'Pwsh-Profile-Kam-New' module is available
+if (-not (Get-Module -Name Pwsh-Profile-Kam-New -ListAvailable)) {
+    Write-Host "Missing required 'Pwsh-Profile-Kam-New' module." -ForegroundColor Yellow
     Write-Host "Please, install this module once using the following command:" -ForegroundColor Yellow
-    Write-Host "  Install-Module -Name Pwsh-Profile -Repository PSGallery -Scope CurrentUser -Force" -ForegroundColor DarkGray
+    Write-Host "  Install-Module -Name Pwsh-Profile-Kam-New -Repository PSGallery -Scope CurrentUser -Force" -ForegroundColor DarkGray
     return
 }
 else {
-    # Check for updates to the 'Pwsh-Profile' module
+    # Check for updates to the 'Pwsh-Profile-Kam-New' module
     $update8030 = Join-Path -Path (Get-CachedPowerShellProfileFolder) -ChildPath "pwsh_profile_8030"
     if (-not (Test-Path $update8030)) {
-        $online = Find-Module -Name Pwsh-Profile -Repository PSGallery
-        $current = Get-module -Name Pwsh-Profile -ListAvailable
+        \
+        $online = Find-Module -Name Pwsh-Profile-Kam-New -Repository PSGallery
+        $current = Get-module -Name Pwsh-Profile-Kam-New -ListAvailable
         if ($online.Version -gt $current.Version) {
-            Write-Host "Required 'Pwsh-Profile' module has updates." -ForegroundColor Yellow
+            Write-Host "Required 'Pwsh-Profile-Kam-New' module has updates." -ForegroundColor Yellow
             Write-Host "Please, update this module using the following command:" -ForegroundColor Yellow
-            Write-Host "  Update-Module -Name Pwsh-Profile -Force" -ForegroundColor DarkGray
+            Write-Host "  Update-Module -Name Pwsh-Profile-Kam-New -Force" -ForegroundColor DarkGray
         }
         Set-Content -Path $update8030 -Value $null
     }
